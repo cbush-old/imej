@@ -1,11 +1,8 @@
 #include <iostream>
 #include <iomanip>
-#include <vector>
-#include <string>
 #include <sys/ioctl.h>
 #include <unistd.h>
-#include <imlib2.h>
-#include <cmath>
+#include <Imlib2.h>
 #include <cstdint>
 
 using namespace std;
@@ -16,28 +13,16 @@ int get_terminal_width(){
   return w.ws_col;
 }
 
-void put_go(){
-  cout << "\033(0";
-}
-
-void put_gf(){
-  cout << "\033(B";
-}
-
 void put_chars(Imlib_Color pixels[2]){
   Imlib_Color *bg = pixels, *fg = pixels + 1;
-  uint8_t limit[] = {
-    0x7f,
-    0x7f,
-    0x7f,
-  };
+  uint8_t limit[] = { 0x7f, 0x7f, 0x7f };
   int bg_x = 40
-    + ((bg->red > limit[0]) << 0)
+    + (bg->red > limit[0])
     + ((bg->green > limit[1]) << 1)
     + ((bg->blue > limit[2]) << 2);
 
   int fg_x = 30
-    + ((fg->red > limit[0]) << 0)
+    + (fg->red > limit[0])
     + ((fg->green > limit[1]) << 1)
     + ((fg->blue > limit[2]) << 2);
 
@@ -47,7 +32,7 @@ void put_chars(Imlib_Color pixels[2]){
     (fg->blue > 0xa0);
 
   cout << "\033[" << bold << ";" << fg_x << ";" << bg_x << "m";
-  cout << "0";
+  cout << "a";
 }
 
 void put_endl(){
