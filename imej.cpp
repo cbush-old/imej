@@ -23,7 +23,7 @@ void put_chars(Imlib_Color pixels[2]){
 
   int fg_x = 30
     + (fg->red > limit[0])
-    + ((fg->green > limit[1]) << 1)
+    + ((fg->green > limit[1]) << 1) 
     + ((fg->blue > limit[2]) << 2);
 
   int bold =
@@ -61,8 +61,6 @@ int main(int argc, char* argv[]){
   Imlib_Image scaled = imlib_create_cropped_scaled_image(
     0, 0, w, h, scaled_w, scaled_h
   );
-
-  cout << "New size: " << scaled_w << "x" << scaled_h << "\n";
 
   imlib_free_image();
   imlib_context_set_image(scaled);
