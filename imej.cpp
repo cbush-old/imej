@@ -63,8 +63,8 @@ int main(int argc, char* argv[]){
     Imlib_Image image = imlib_load_image(path.c_str());
 
     if(!image){
-      cerr << "Invalid image\n";
-      return 1;
+      cerr << "Couldn't open " << path << ": invalid image?\n";
+      continue;
     }
 
     imlib_context_set_image(image);
