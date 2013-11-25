@@ -1,0 +1,5 @@
+IMEJ
+
+A simple command-line image viewer.
+
+Requires imlib2 and an ANSI terminal.
